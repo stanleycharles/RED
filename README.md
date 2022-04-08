@@ -1,4 +1,4 @@
 # RED
 Offensive / PT Methodology + Tools / CMD
 
- - Recon-ng (emun)
+ - Recon-ng 💥 (recon / emun)
