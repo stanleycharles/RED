@@ -6,3 +6,4 @@ Offensive / PT Methodology + Tools / CMD
  - John (pw / hash / dico ) : 
  - Hashcat (pw / hash / dico) : https://hashcat.net/wiki/doku.php?id=hashcat
  - hydra (pw / brute 
+ - Powerview (win, AD, emun) : https://book.hacktricks.xyz/windows/basic-powershell-for-pentesters/powerview
