@@ -244,3 +244,5 @@ Demonstrate how to detect static AV signatures using a simple trial and error me
 Different ways to modify detected pieces of code in order to bypass the found signatures. 
 Demonstrate this in the following languages: PowerShell, C#, and C++
 
+PowerShellArmoury: https://github.com/cfalta/PowerShellArmoury
+
