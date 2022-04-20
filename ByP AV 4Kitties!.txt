@@ -1,0 +1,246 @@
+4Kitties 😸 How to Bypass A/V
+
+
+
+--------------------------------------------------
+
+
+
+### TEST.1 / SQL Injection Basics 
+
+
+- Search bar 
+
+8.8.8.8 && whoami = test 
+
+
+- 3 ways to bypass AV (DNS name (server, ec2, Tserver) 
+  + ping.png script (w/ Payload inside) on Windows server 2019 (Target) 
+  -VS- Access to the web app w/Kali (attacker))
+
+
+(undectected netcat) https://eternallybored.org/misc/netcat/ 
+(Powershell bypass AV CMD) https://gist.github.com/BankSecurity
+(obfuscation + pastebin) https://amsi.fail 
+
+
+
+------------------------------------------------
+
+
+
+### TEST.2 Nimcrypt Demo 
+
+Nimcrypt is a .NET PE Crypter written in Nim that's designed to get offensive security tools past antivirus. 
+I show how the public version is currently being detected by Windows defender, and how a private version isn't.
+
+
+Bypass AV with Nimcrypt (git): https://github.com/icyguider/nimcrypt
+
+
+
+-------------------------------------------------
+
+
+
+### TEST.3 Running Meterpreter and CS with SysWhispers (PoC)
+
+Demonstrating how Meterpreter and CS can be integrated with SysWhispers in order to bypass AV.
+
+
+
+----------------------------------------------------
+
+
+
+### TEST.4 CS Attack Simulation with AV Enabled
+
+
+This video serves as a brief demo of a sample attack simulation using CS against a fully updated system with AV enabled. 
+The attack flow is as follows:
+
+
+1. Victim is sent lnk file disguised as pdf.
+2. Victim double clicks the file which opens a sample pdf and spawns a CS beacon.
+3. Attacker interacts with the CS beacon to run a custom UAC Bypass that launches a privileged beacon.
+4. The attacker initializes BOFNET in the privileged beacon and loads a custom AMSI & ETW Bypass.
+5. SharpKatz is loaded and executed with BOFNET in order to dump passwords from the victim's computer.
+6. Persistence is installed on the system via a custom scheduled task.
+
+As you may have noticed, the attack flow depends on many custom tools and scripts that are required to bypass AV. 
+The UAC Bypass and Persistence mechanism are simple shell scripts created by myself, whereas the other tools I used are publicly available with little modification. 
+Below is a list of publicly available resources that helped me to accomplish this:
+
+SysWhispers Integrated with Artifact Kit: https://br-sn.github.io/Implementing-Syscalls-In-The-CobaltStrike-Artifact-Kit/
+BOFNET: https://github.com/CCob/BOF.NET
+SharpUnhooker: https://github.com/GetRektBoy724/SharpUnhooker
+
+
+
+-----------------------------------------------------------------------------
+
+
+
+### TEST.5 Run Meterpreter via PowerShell & Pass-The-Hash with Evil-WinRM
+
+Demonstrating how to run Meterpreter via PowerShell in order to bypass Windows Defender. 
+Afterwards I demonstrate dumping hashes with Meterpreter and using Evil-WinRM to Pass-The-Hash to login as another user.
+
+This attack process is notable because it uses public tools with no modification, making it easy to perform by anyone. 
+The only thing that an attacker needs is a working AMSI Bypass, which are relatively easy to make/find on the internet.
+
+
+Evil-WinRM: https://github.com/Hackplayers/evil-winrm
+
+
+
+---------------------------------------------------------------------------
+
+
+
+### TEST.6 Unpatched AD CS Vulnerability Exploitation with NTLMRelayx
+
+
+Demonstrate how to exploit the unpatched Active Directory Certificate Services vulnerability that exists in the web enrollment feature. 
+NTLMRelayx and dementor.py are used to trigger authentication and receive a base64 encoded certificate for the Domain Controller. 
+This certificate is then used with Rubeus by a low-priv Domain User on their workstation with AV enabled in order to obtain Domain Admin privileges. 
+Finally, BetterSafetyKatz (Mimikatz alternative) is used to dump all the domain hashes in the network.
+
+
+NTLMRelayx with ADCS flag: https://github.com/ExAndroidDev/impacket
+Dementor.py: https://github.com/NotMedic/NetNTLMtoSilverTicket/blob/master/dementor.py
+My fork of PowerSharpPack (Contains Rubeus, BetterSafetyKatz, etc.): https://github.com/icyguider/PowerSharpPack
+
+Guides:
+https://www.exandroid.dev/2021/06/23/ad-cs-relay-attack-practical-guide/
+https://www.insecurewi.re/ad-cs-petitpotam-relay-attack-using-mimikatz-and-ntlmrelayx/ 
+
+
+
+------------------------------------------------------------------------------
+
+
+
+### TEST.7 NTLM Relaying via CS (AD CS Exploit Demo)
+
+Demonstrate how to NTLM Relay through CS in order to exploit the unpatched Active Directory Certificate Services (AD CS) vulnerability in the Web Enrollment feature. 
+PortBender is used with reverse port forwarding and a socks proxy in order to create a tunnel that allows the attacker to relay requests on a network that they aren't directly connected to. 
+SpoolSample is then executed through the beacon to coerce authentication from the domain controller to a NTLMRelayx server through the tunnel. 
+Once the base64 generated certificate is received, Rubeus was used with BOFNET to perform a "pass the ticket" attack. T
+This effectively gave the beacon session Domain Admin access, which was demonstrated by dumping all the hashes on the domain with Mimikatz.
+
+PortBender: https://github.com/praetorian-inc/PortBender
+SpoolSample: https://github.com/leechristensen/SpoolSample
+NTLMRelayx: https://github.com/ExAndroidDev/impacket
+SharpUnhooker: https://github.com/GetRektBoy724/SharpUnhooker
+Rubeus: https://github.com/GhostPack/Rubeus
+
+
+
+-------------------------------------------------------------
+
+
+
+### TEST.8 Shhhloader Release & Demo (SysWhispers Shellcode Loader)
+
+
+Shhhloader is a SysWhispers based Shellcode Loader that takes raw shellcode as input and compiles a C++ stub that has been integrated with SysWhispers in order to bypass AV/EDR.
+Demonstrate how the tool can be used with Metasploit and CS to bypass Windows Defender on two different fully up-to-date machines. 
+
+Shhhloader: https://github.com/icyguider/Shhhloader
+
+
+
+--------------------------------------------------------------------
+
+
+
+### TEST.9 Dumping Passwords from Memory
+
+
+Demonstrate a bunch of different ways to dump passwords stored in memory without being blocked by Windows Defender. 
+
+
+LSASS Dumping Scripts/Tools:
+https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Out-Minidump.ps1
+https://github.com/slyd0g/C-Sharp-Out-Minidump
+https://github.com/cube0x0/MiniDump
+https://github.com/icyguider/DumpNParse
+
+Mimikatz Variants:
+https://github.com/samratashok/nishang/blob/master/Gather/Invoke-Mimikatz.ps1
+https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-SharpKatz.ps1
+https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-BetterSafetyKatz.ps1
+
+
+### TEST.10 Shhhloader Update Released (Meterpreter Demo)
+
+
+A new version of my SysWhispers shellcode loader (Shhhloader)
+Demonstrate how to use it with Metasploit's x64/meterpreter/reverse_tcp payload to bypass an updated system with Windows Defender enabled.
+
+Shhhloader: https://github.com/icyguider/Shhhloader
+
+
+
+------------------------------------
+
+
+
+### TEST.11 Shhhloader Process Hollowing Update (Meterpreter & Cobalt Strike Demo)
+
+
+Demonstration of the new update for my Shhhloader tool in which I've implemented process hollowing.
+Show how the tool can allow both Meterpreter and CS to run on fully updated Windows Server 2019 and Windows 10 PC virtual machines with Windows Defender enabled
+
+
+Shhhloader: https://github.com/icyguider/Shhhloader
+
+References Mentioned:
+https://github.com/snovvcrash/NimHollow
+https://labs.f-secure.com/blog/bypassing-windows-defender-runtime-scanning/
+
+
+
+--------------------------------------------------------------
+
+
+
+### TEST.12 Transferring Files over ICMP in Restricted Network Environments
+
+
+Demonstrate how to transfer files over ICMP in a restricted network environment using my recently released ICMP-TransferTools. 
+ICMP-TransferTools is a collection of 4 different files, consisting of a python server and PowerShell client for each transfer direction (Download & Upload)
+
+Links:
+https://github.com/icyguider/ICMP-TransferTools
+https://icyguider.github.io/2022/02/01/Transferring-Files-Over-ICMP.html
+https://github.com/chvancooten/NimPackt-v1
+
+
+
+----------------------------------------------------------
+
+
+
+### TEST.13 Nimcrypt2 EDR Bypass Demo (CrowdStrike, McAfee, Trend Micro)
+
+
+A brief demo of how my recently released tool called Nimcrypt2 stacks up against 3 different popular EDR solutions. 
+I demonstrate how versions of Seatbelt and Mimikatz that were packed using my tool can be executed against these EDR solutions without being blocked.
+
+Nimcrypt2: https://github.com/icyguider/Nimcrypt2
+
+
+
+---------------------------------------------------------------
+
+
+
+### TEST.14 Manually Find & Bypass Static AV Signatures (PowerShell, C#, C++)
+
+
+Demonstrate how to detect static AV signatures using a simple trial and error methodology. 
+Different ways to modify detected pieces of code in order to bypass the found signatures. 
+Demonstrate this in the following languages: PowerShell, C#, and C++
+
