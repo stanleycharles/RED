@@ -187,7 +187,7 @@ Shhhloader: https://github.com/icyguider/Shhhloader
 
 
 
-### TEST.11 Shhhloader Process Hollowing Update (Meterpreter & Cobalt Strike Demo)
+### TEST.11 Shhhloader Process Hollowing Update (Meterpreter & CS Demo)
 
 
 Demonstration of the new update for my Shhhloader tool in which I've implemented process hollowing.
