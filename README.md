@@ -10,4 +10,5 @@ Offensive / PT Methodology + Tools / CMD
 
 Ressources
  - OSINT Framework : https://osintframework.com/
- - 
+ - HackTricks : https://book.hacktricks.xyz/
+ - The Hacker Recipes : https://www.thehacker.recipes/
