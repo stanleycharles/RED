@@ -8,7 +8,6 @@ Offensive / PT Methodology + Tools / CMD
  - hydra (pw / brute) : https://noxtal.com/cheatsheets/2020/07/24/hydra-cheatsheet
  - Powerview 💥 (win, ad, emun) : https://book.hacktricks.xyz/windows/basic-powershell-for-pentesters/powerview
  - Cyberchef (decode) : https://gchq.github.io/CyberChef/
- - 
 
 Ressources
  - OSINT Framework : https://osintframework.com
