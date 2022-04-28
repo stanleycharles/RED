@@ -7,3 +7,7 @@ Offensive / PT Methodology + Tools / CMD
  - Hashcat (pw / hash / dico) : https://hashcat.net/wiki/doku.php?id=hashcat
  - hydra (pw / brute) : https://noxtal.com/cheatsheets/2020/07/24/hydra-cheatsheet/
  - Powerview 💥 (win, ad, emun) : https://book.hacktricks.xyz/windows/basic-powershell-for-pentesters/powerview
+
+Ressources
+ - OSINT Framework : https://osintframework.com/
+ - 
