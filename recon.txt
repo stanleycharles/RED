@@ -8,6 +8,9 @@ nslookup cafe.thmredteam.com
 
 dig
 dig cafe.thmredteam.com @1.1.1.1
+dig @1.1.1.1 hackersploit.org
+dig hackersploit.org NS (nameserver)
+dig 8.8.8.8 zonetransfer.me ANY
 
 host
 host cafe.thmredteam.com
@@ -15,12 +18,39 @@ host cafe.thmredteam.com
 traceroute/tracert (win)
 traceroute cafe.thmredteam.com
 
+dnsrecon
+dnsrecon -d hackersploit.org
+dnsrecon zonetransfer.me -t axfr
+
+wafw00f
+wafw00f hackersploit.org
+(firewall / proxy protection)
+
+whatweb
+whatweb hackersploit.org
+
+theHarvester 💥
+theHarvester -d DigiNinja -b google,likedin,bing
+theHarvester -d zonetransfer.me -b google,twitter,linkedin,yahoo,sublist3r
+theHarvester -d hackersploit.org -l 500 -b google,yahoo,bing,linkedin -n
+
+sublist3r 💥
+sublist3r -d hackersploit.org
+
 recon.ng (framework) 💥💥💥
 workspaces create thmredteam
 recon-ng -w thmredteam
 
 Site:
 crt.sh (advanced search)
+netcraft.com
+dnsdumpster.com
+
+Browser apps:
+Wappalyzer
+BuildWith
+
+
 
 ### Google Dorks ------------------------------------------------
 
@@ -30,6 +60,18 @@ salary site:blog.tryhackme.com	          Limit search results to a specific site
 pentest -site:example.com	               Exclude a specific site from results
 walkthrough intitle:TryHackMe	           Find pages with a specific term in the page title.
 challenge inurl:tryhackme                Find pages with a specific term in the page URL.
+
+site: *.bbc.com
+site: *.bbc.com -site:www.bbc.com
+site:bbc.com admin
+site:bbc.com inurl:admin
+site:bbc.com inurl:admin.php
+site:bbc.com inurl:login
+inurl:wp-login.php
+site:bbc.com filetype:pdf
+
+
+
 
 ## Ip lookups ------------------------------------------------
 
