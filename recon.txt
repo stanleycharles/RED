@@ -29,6 +29,14 @@ wafw00f hackersploit.org
 whatweb
 whatweb hackersploit.org
 
+fierce
+fierce --domain zonetransfer.me --subdomains
+fierce --domain hackersploit.org --subdomains
+
+knockpy
+knockpy zonetransfer.me
+knockpy zonetransfer.me -w /usr/share/seclists/Discovery/DNS/shubs.txt
+
 theHarvester 💥
 theHarvester -d DigiNinja -b google,likedin,bing
 theHarvester -d zonetransfer.me -b google,twitter,linkedin,yahoo,sublist3r
@@ -37,9 +45,41 @@ theHarvester -d hackersploit.org -l 500 -b google,yahoo,bing,linkedin -n
 sublist3r 💥
 sublist3r -d hackersploit.org
 
+nmap 💥
+nmap -sS -sV -p- 443 5.196.105.14 --script=ssl-heartbleed -oN zonetransfer_nmap.txt
+
+searchsploit 💥
+searchsploit heartbleed 
+
+nikto 💥
+nikto -h zonetransfer.me
+
+gosbuster 💥
+
+wfuzz
+
+CMSmap
+
+sniper (git) 💥
+sniper -t hackersploit.org
+sniper -t zonetransfer.me -m stealth -o -re  
+
+amass (owasp) 💥
+amass intel -whois -d zonetransfer.me -dir zonetranfer
+amass enum -d zonetransfer.me
+amass enum -d zonetransfer.me -src -ip -dir zonetransfer
+amass enum -d zonetransfer.me -src -ip -brute -dir zonetransfer
+amass db -dir zonetransfer -list
+amass viz -dir zonetransfer -d3 (graph html file)
+
 recon.ng (framework) 💥💥💥
 workspaces create thmredteam
 recon-ng -w thmredteam
+marketplace search 
+marketplace search dns
+marketplace install recon/domains-contacts/whois_pocs
+modules load recon/domains-contacts/whois_pocs -> options list
+  
 
 Site:
 crt.sh (advanced search)
@@ -49,7 +89,6 @@ dnsdumpster.com
 Browser apps:
 Wappalyzer
 BuildWith
-
 
 
 ### Google Dorks ------------------------------------------------
@@ -69,7 +108,6 @@ site:bbc.com inurl:admin.php
 site:bbc.com inurl:login
 inurl:wp-login.php
 site:bbc.com filetype:pdf
-
 
 
 
