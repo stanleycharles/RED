@@ -19,3 +19,7 @@ Ressources
  - Pentestmonkey : https://pentestmonkey.net
  - Sploitus : https://sploitus.com
  - Executeatwill : https://executeatwill.com
+ - 0day.today : https://0day.today
+ - Zerodium : https://zerodium.com
+ - Breach : https://breached.com
+
