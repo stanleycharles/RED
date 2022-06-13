@@ -1,1 +1,2 @@
-Hackersploit
+Persistance w/ Empire, Metasploit, CS
+
