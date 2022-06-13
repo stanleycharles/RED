@@ -1,2 +1,10 @@
 Persistance w/ Empire, Metasploit, CS
 
+linode - HS
+
+Using the Registry-Key Persistence Module
+Using the Scheduled Tasks Persistence Module
+Using the WMI Persistence Module
+Using Local User Accounts as a Means of Persistence
+Using the PowerBreach Module to create a Backdoor
+
