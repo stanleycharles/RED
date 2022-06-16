@@ -112,7 +112,7 @@ On kali (attacker VM)
  On the Win (target VM)
    
    - execute winrar.32.bits.exe 
-   - run anyway                                           #(reverse shell works via meterpreter)
+   - run anyway                                           #(reverse shell works via meterpreter !)
    
    
        
