@@ -6,7 +6,7 @@ linode - HS
 
 
 
-🟦 Windows  /  Metasploit sessions
+🟦 Windows (Win7)  /  Metasploit sessions
 
 
 (Technique 1) Bypass UAC 
