@@ -9,7 +9,7 @@ Offensive / PT Methodology + Tools / CMD
  - Powerview 💥 (win, ad, emun) : https://book.hacktricks.xyz/windows/basic-powershell-for-pentesters/powerview
  - Crackmapexec : https://mpgn.gitbook.io/crackmapexec
  - Cyberchef (decode) : https://gchq.github.io/CyberChef
-
+ 
 Ressources
  - OSINT Framework : https://osintframework.com
  - HackTricks : https://book.hacktricks.xyz
@@ -21,5 +21,11 @@ Ressources
  - Executeatwill : https://executeatwill.com
  - 0day.today : https://0day.today
  - Zerodium : https://zerodium.com
- - Breach : https://breached.com
+ - Breach : https://breached.com 
+ 
+OSINT
+ - Maltego : https://www.maltego.com
+ - Lampyre : https://lampyre.io
+ - Pappers : https://www.pappers.fr
+ - IQwhois : https://iqwhois.com
 
