@@ -11,6 +11,7 @@ Offensive / PT Methodology + Tools / CMD
  - Cyberchef (decode) : https://gchq.github.io/CyberChef
  
 Ressources
+ - theC2Matrix : https://www.thec2matrix.com
  - OSINT Framework : https://osintframework.com
  - HackTricks : https://book.hacktricks.xyz
  - The Hacker Recipes : https://www.thehacker.recipes
