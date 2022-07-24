@@ -29,4 +29,5 @@ OSINT
  - Lampyre : https://lampyre.io
  - Pappers : https://www.pappers.fr
  - IQwhois : https://iqwhois.com
+ - Geo Social Footprint : http://geosocialfootprint.com
 
