@@ -26,8 +26,10 @@ Ressources
  
 OSINT
  - Maltego : https://www.maltego.com
+ - Shodan : https://shodan.io
  - Lampyre : https://lampyre.io
  - Pappers : https://www.pappers.fr
  - IQwhois : https://iqwhois.com
+ - Spiderfoot : https://www.spiderfoot.net
  - Geo Social Footprint : http://geosocialfootprint.com
 
