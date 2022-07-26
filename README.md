@@ -1,6 +1,7 @@
 # RED
 Offensive / PT Methodology + Tools / CMD
 
+ - nmap : https://nmap.org
  - Recon-ng 💥 (framework / recon / enum)
  - msfvenom (offensive, payloads) : https://thedarksource.com/msfvenom-cheat-sheet-create-metasploit-payloads
  - John (pw / hash / dico ) : https://www.golinuxcloud.com/john-the-ripper-password-cracker
@@ -10,7 +11,7 @@ Offensive / PT Methodology + Tools / CMD
  - Crackmapexec : https://mpgn.gitbook.io/crackmapexec
  - Cyberchef (decode) : https://gchq.github.io/CyberChef
  - Veil Framework (obfus) : https://www.veil-framework.com
- - Kismet (wifi) - https://www.kismetwireless.net
+ - Kismet (wifi) 💥 https://www.kismetwireless.net
 
 Ressources
 
