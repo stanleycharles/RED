@@ -9,7 +9,7 @@ Offensive / PT Methodology + Tools / CMD
  - Powerview 💥 (win, ad, emun) : https://book.hacktricks.xyz/windows/basic-powershell-for-pentesters/powerview
  - Crackmapexec : https://mpgn.gitbook.io/crackmapexec
  - Cyberchef (decode) : https://gchq.github.io/CyberChef
- 
+ - Veil Framework : https://www.veil-framework.com
 Ressources
  - theC2Matrix : https://www.thec2matrix.com
  - OSINT Framework : https://osintframework.com
