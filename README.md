@@ -10,7 +10,9 @@ Offensive / PT Methodology + Tools / CMD
  - Crackmapexec : https://mpgn.gitbook.io/crackmapexec
  - Cyberchef (decode) : https://gchq.github.io/CyberChef
  - Veil Framework : https://www.veil-framework.com
+
 Ressources
+
  - theC2Matrix : https://www.thec2matrix.com
  - OSINT Framework : https://osintframework.com
  - HackTricks : https://book.hacktricks.xyz
