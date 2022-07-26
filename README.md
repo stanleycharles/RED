@@ -33,6 +33,7 @@ OSINT
  - Lampyre : https://lampyre.io
  - Pappers : https://www.pappers.fr
  - IQwhois : https://iqwhois.com
+ - Epieos : https://epieos.com
  - Spiderfoot : https://www.spiderfoot.net
  - Geo Social Footprint : http://geosocialfootprint.com
 
