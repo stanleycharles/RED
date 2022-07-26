@@ -10,6 +10,7 @@ Offensive / PT Methodology + Tools / CMD
  - Crackmapexec : https://mpgn.gitbook.io/crackmapexec
  - Cyberchef (decode) : https://gchq.github.io/CyberChef
  - Veil Framework (obfus) : https://www.veil-framework.com
+ - Kismet (wifi) - https://www.kismetwireless.net
 
 Ressources
 
