@@ -33,6 +33,7 @@ OSINT
  - Shodan : https://shodan.io
  - Lampyre : https://lampyre.io
  - Pappers : https://www.pappers.fr
+ - Hunter : https://hunter.io
  - IQwhois : https://iqwhois.com
  - Epieos : https://epieos.com
  - Spiderfoot : https://www.spiderfoot.net
