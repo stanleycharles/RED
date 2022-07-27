@@ -1,7 +1,7 @@
 # RED
 Offensive / PT Methodology + Tools / CMD
 
- - nmap : https://nmap.org
+ - nmap (scan) : https://nmap.org
  - Recon-ng 💥 (framework / recon / enum) : https://github.com/lanmaster53/recon-ng
  - msfvenom (offensive, payloads) : https://thedarksource.com/msfvenom-cheat-sheet-create-metasploit-payloads
  - John (pw / hash / dico ) : https://www.golinuxcloud.com/john-the-ripper-password-cracker
