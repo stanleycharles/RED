@@ -38,4 +38,5 @@ OSINT
  - Epieos : https://epieos.com
  - Spiderfoot : https://www.spiderfoot.net
  - Geo Social Footprint : http://geosocialfootprint.com
+ - Social Bearing : https://socialbearing.com
 
