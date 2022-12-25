@@ -40,4 +40,5 @@ OSINT
  - Geo Social Footprint : http://geosocialfootprint.com
  - Social Bearing : https://socialbearing.com
  - Crystal Blockchain : https://crystalblockchain.com
+ - Blockpath : https://blockpath.com
 
