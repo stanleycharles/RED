@@ -32,6 +32,8 @@ OSINT
  - Maltego : https://www.maltego.com
  - Shodan : https://shodan.io
  - Lampyre : https://lampyre.io
+ - Censys : https://search.censys.io
+ - Zoomeye : https://www.zoomeye.org
  - Pappers : https://www.pappers.fr
  - Hunter : https://hunter.io
  - IQwhois : https://iqwhois.com
@@ -42,3 +44,4 @@ OSINT
  - Crystal Blockchain : https://crystalblockchain.com
  - Blockpath : https://blockpath.com
  - Ransomwhe.re : https://ransomwhe.re
+
