@@ -44,4 +44,7 @@ OSINT
  - Crystal Blockchain : https://crystalblockchain.com
  - Blockpath : https://blockpath.com
  - Ransomwhe.re : https://ransomwhe.re
+ 
+ Roadmap
+ - https://cyber-judo.com/security-engineer-skill-tree-certification-recommendations
 
