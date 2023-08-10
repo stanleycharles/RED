@@ -12,6 +12,7 @@ Offensive / PT Methodology + Tools / CMD
  - Cyberchef (decode) : https://gchq.github.io/CyberChef
  - Veil Framework (obfus) : https://www.veil-framework.com
  - Kismet 💥 (wifi) : https://www.kismetwireless.net
+ - Exegol : https://exegol.readthedocs.io/en/latest/ (c2c / framework)
 
 Ressources
 
