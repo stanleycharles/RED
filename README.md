@@ -49,4 +49,5 @@ OSINT
  
  Roadmap
  - https://cyber-judo.com/security-engineer-skill-tree-certification-recommendations
+ - https://github.com/DFIRmadness/5pillars/blob/master/5-Pillars.md
 
