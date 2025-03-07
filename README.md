@@ -50,4 +50,5 @@ OSINT
  Roadmap
  - https://cyber-judo.com/security-engineer-skill-tree-certification-recommendations
  - https://github.com/DFIRmadness/5pillars/blob/master/5-Pillars.md
+ - https://orange-cyberdefense.github.io/ocd-mindmaps/img/mindmap_ad_dark_classic_2025.03.excalidraw.svg
 
